@@ -1,0 +1,472 @@
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script src="https://unpkg.com/react-error-boundary@1.2.5/dist/umd/react-error-boundary.js"></script>
+  <!-- <style>
+    .box {
+      display: flex;
+      border: 1px solid black;
+      padding: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box-small {
+      height: 50px;
+      width: 50px;
+    }
+
+    .box-medium {
+      height: 100px;
+      width: 100px;
+    }
+
+    .box-large {
+      height: 200px;
+      width: 200px;
+    }
+  </style> -->
+  <script type="text/babel">
+    // Create a UI with Vanilla JS and DOM
+    // const rootElement = document.getElementById("root");
+    // const element = document.createElement("div");
+    // element.textContent = "Hello World test";
+    // rootElement.appendChild(element);
+
+    // Create a UI Using React.createElement API
+    // const rootElement = document.getElementById("root");
+    // const element = React.createElement(
+    //   "div",
+    //   {
+    //     children: React.createElement("span", null, "Bye bye bye!!!!"),
+    //     className: "container",
+    //   }
+    // ["Hello World", ", Goodbye", "! hello"]
+    // );
+    // console.log(element);
+    // ReactDOM.render(element, rootElement);
+
+    // Create a UI Using JSX syntax
+    // const rootElement = document.getElementById("root");
+    // const children = " Hello World!!";
+    // const preChild = "What's up?!";
+    // const props = { children };
+    // const element = <div {...props} />;
+    // ReactDOM.render(element, rootElement);
+
+    // Render2 elements with React Fragments
+    // const rootElement = document.getElementById("root");
+    // const element = (
+    //   <>
+    //     <div> Wat'ups</div>
+    //     <div>Hello World</div>
+    //   </>
+    // );
+    // ReactDOM.render(element, rootElement);
+
+    // Create a React reusable component
+    // const rootElement = document.getElementById("root");
+    // const Message = ({ msg }) => <div>{msg}</div>;
+    // const element = (
+    //   <>
+    //     <Message msg="Hello" />
+    //     <Message msg="World" />
+    //   </>
+    // );
+    // ReactDOM.render(element, rootElement);
+
+    // PropType validation
+
+    // Use interpolation in JSX
+    // function CharacterCount({ text }) {
+    //   // const length = text.length == 0 ? "no" : text.length;
+    //   const boldText = text.length == 0 ? "no" : <strong>{text.length}</strong>;
+    //   return (
+    //     <div>
+    //       {`The text "${text}" has`} {boldText} characters
+    //     </div>
+    //   );
+    // }
+
+    // const element = (
+    //   <Greeting>
+    //     <CharacterCount text="Hello" />
+    //     <CharacterCount text="" />
+    //   </>
+    // );
+    // ReactDOM.render(element, document.getElementById("root"));
+
+    // Rerender React app
+    // function tick() {
+    //   const time = new Date().toLocaleTimeString();
+    //   const element = <div>{time}</div>;
+    //   ReactDOM.render(element, document.getElementById("root"));
+    // }
+    // setInterval(tick, 1000);
+
+    // React Component className and inline styles
+    // function Box({ size, style, ...rest }) {
+    //   const sizeClassName = size ? `box-${size}` : "";
+    //   return (
+    //     <div
+    //       className={`box ${sizeClassName}`}
+    //       {...rest}
+    //       style={{ fontStyle: "italic", ...style }}
+    //     />
+    //   );
+    // }
+    // const element = (
+    //   <div>
+    //     <Box
+    //       size="small"
+    //       style={{
+    //         backgroundColor: "lightblue",
+    //       }}
+    //     >
+    //       small lightblue box
+    //     </Box>
+    //     <Box
+    //       size="medium"
+    //       style={{
+    //         backgroundColor: "pink",
+    //       }}
+    //     >
+    //       medium lightblue box
+    //     </Box>
+    //     <Box
+    //       size="large"
+    //       style={{
+    //         backgroundColor: "orange",
+    //       }}
+    //     >
+    //       large lightblue box
+    //     </Box>
+    //   </div>
+    // );
+    // ReactDOM.render(element, document.getElementById("root"));
+
+    // Event handlers with react
+    // function useLocalStorageState(key, defaultValue = "") {
+    //   const [state, setState] = React.useState(
+    //     () => window.localStorage.getItem(key) || defaultValue
+    //   );
+
+    //   React.useEffect(() => {
+    //     window.localStorage.setItem(key, state);
+    //   }, [key, state]);
+
+    //   return [state, setState];
+    // }
+
+    // function Greeting() {
+    //   const [name, setName] = useLocalStorageState("name");
+
+    //   console.log(useLocalStorageState());
+
+    //   const handleChange = (event) => setName(event.target.value);
+
+    //   return (
+    //     <div>
+    //       <form>
+    //         <label htmlFor="name">Name: </label>
+    //         <input value={name} id="name" onChange={handleChange} />
+    //       </form>
+    //       {name ? <strong>Hello {name}</strong> : "Please type your name"}
+    //     </div>
+    //   );
+    // }
+
+    // function App() {
+    //   const [count, setCount] = React.useState(0);
+    //   return (
+    //     <>
+    //       <button onClick={() => setCount((e) => e + 1)}>{count}</button>
+    //       <Greeting />
+    //     </>
+    //   );
+    // }
+
+    // ReactDOM.render(<App />, document.getElementById("root"));
+
+    // Basic forms with react
+    // function UsernameForm() {
+    //   // const usernameInputRef = React.useRef();
+    //   const [username, setUsername] = React.useState("");
+
+    //   // const isLowerCase = username === username.toLowerCase();
+
+    //   // const error = isLowerCase ? null : "Username must be lower case";
+
+    //   function handleSubmit(event) {
+    //     event.preventDefault();
+    //     // const username = event.target.elements[0].value;
+    //     // const username = usernameInputRef.current.value;
+    //     // const username = event.target.elements.name.value;
+    //     alert(`You entered: ${username}`);
+    //   }
+
+    //   function handleChange(event) {
+    //     setUsername(event.target.value.toLowerCase());
+    //   }
+
+    //   return (
+    //     <form onSubmit={handleSubmit}>
+    //       <div>
+    //         <label htmlFor="name">Username:</label>
+    //         <input
+    //           id="name"
+    //           type="text"
+    //           onChange={handleChange}
+    //           value={username}
+    //         />
+    //       </div>
+    //       <button type="submit">Submit</button>
+    //     </form>
+    //   );
+    // }
+
+    // ReactDOM.render(<UsernameForm />, document.getElementById("root"));
+
+    // Handle error with React
+
+    // Using React library to handle error boundary
+    // const ErrorBoundary = ReactErrorBoundary.ErrorBoundary;
+    // Create error boundary from scratch
+    // class ErrorBoundary extends React.Component {
+    //   state = { error: null };
+    //   static getDerivedStateFromError(error) {
+    //     return { error };
+    //   }
+    //   render() {
+    //     const { error } = this.state;
+    //     if (error) {
+    //       return <this.props.FallbackComponent error={error} />;
+    //     }
+    //     return this.props.children;
+    //   }
+    // }
+
+    // function ErrorFallback({ error }) {
+    //   return (
+    //     <div>
+    //       <p>Something went wrong!!!</p>
+    //       <pre>{error.message}</pre>
+    //     </div>
+    //   );
+    // }
+
+    // function Bomb() {
+    //   throw new Error(`You are on fire!!!`);
+    // }
+
+    // function App() {
+    //   const [explode, setExplode] = React.useState(false);
+
+    //   return (
+    //     <div>
+    //       <div>
+    //         <button onClick={() => setExplode(true)}>Explode</button>
+    //       </div>
+    //       <div>
+    //         <ErrorBoundary FallbackComponent={ErrorFallback}>
+    //           {explode ? <Bomb /> : "Push the button Christie!"}
+    //         </ErrorBoundary>
+    //       </div>
+    //     </div>
+    //   );
+    // }
+    // ReactDOM.render(<App />, document.getElementById("root"));
+
+    // const allItems = [
+    //   {
+    //     id: "a",
+    //     item: "apple",
+    //   },
+    //   {
+    //     id: "o",
+    //     item: "orange",
+    //   },
+    //   {
+    //     id: "g",
+    //     item: "grape",
+    //   },
+    //   {
+    //     id: "p",
+    //     item: "pear",
+    //   },
+    // ];
+
+    // function App() {
+    //   const [items, setItems] = React.useState(allItems);
+
+    //   function handleClickAdd() {
+    //     setItems([...items, allItems.find((i) => !items.includes(i))]);
+    //   }
+
+    //   function handleClickRemove(item) {
+    //     setItems(items.filter((i) => i !== item));
+    //   }
+
+    //   return (
+    //     <div>
+    //       <button
+    //         disabled={items.length >= allItems.length}
+    //         onClick={handleClickAdd}
+    //       >
+    //         Add item
+    //       </button>
+    //       <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+    //         {items.map((item) => (
+    //           <li key={item.id}>
+    //             <button onClick={() => handleClickRemove(item)}>Remove</button>
+    //             <label htmlFor={`${item.item}-input`}>{item.item}</label>
+    //             <input id={`${item.item}-input`} defaultValue={item.item} />
+    //           </li>
+    //         ))}
+    //       </ul>
+    //     </div>
+    //   );
+    // }
+
+    // ReactDOM.render(<App />, document.getElementById("root"));
+
+    // Lifting and Colocating React State
+    // function Name({ name, handleChangeName }) {
+    //   return (
+    //     <div>
+    //       <label htmlFor="name">Name: </label>
+    //       <input id="name" onChange={handleChangeName} value={name} />
+    //     </div>
+    //   );
+    // }
+
+    // function Animal({ animal, handleChangeAnimal }) {
+    //   return (
+    //     <div>
+    //       <label htmlFor="animal">Favorite Animal: </label>
+    //       <input id="animal" onChange={handleChangeAnimal} value={animal} />
+    //     </div>
+    //   );
+    // }
+
+    // function Display({ name, animal }) {
+    //   return <div>{`Hey ${name}, your favorite animal is ${animal}!`}</div>;
+    // }
+
+    // function App() {
+    //   const [name, setName] = React.useState("Mulan");
+    //   const [animal, setAnimal] = React.useState("Rabbit");
+
+    //   return (
+    //     <form>
+    //       <Name
+    //         name={name}
+    //         handleChangeName={(event) => setName(event.target.value)}
+    //       />
+    //       <Animal
+    //         animal={animal}
+    //         handleChangeAnimal={(event) => setAnimal(event.target.value)}
+    //       />
+    //       <Display name={name} animal={animal} />
+    //     </form>
+    //   );
+    // }
+    // ReactDOM.render(<App />, document.getElementById("root"));
+
+    function PokemonInfo({ pokemon }) {
+      const [status, setStatus] = React.useState("idle");
+      const [poke, setPoke] = React.useState(null);
+      const [error, setError] = React.useState(null);
+
+      React.useEffect(() => {
+        if (!pokemon) {
+          return;
+        }
+        setStatus("pending");
+
+        fetchPokemon(pokemon).then(
+          (pokeData) => {
+            setStatus("resolved");
+            setPoke(pokeData);
+          },
+          (errorData) => {
+            setStatus("rejected");
+            setError(errorData);
+          }
+        );
+      }, [pokemon]);
+      if (status === "idle") {
+        return "Submit a pokemon";
+      }
+      if (status === "pending") {
+        return "...Loading...";
+      }
+      if (status === "resolved") {
+        return <pre>{JSON.stringify(poke, null, 2)}</pre>;
+      }
+      if (status === "rejected") {
+        return "Something went wrong!";
+      }
+    }
+
+    function App() {
+      const [pokemon, setPokemon] = React.useState("");
+
+      function handleSubmit(event) {
+        event.preventDefault();
+        setPokemon(event.target.elements.pokemonInput.value);
+      }
+
+      return (
+        <div>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="pokemonInput">Pokemon Name</label>
+            <div>
+              <input id="pokemonInput" />
+              <button type="submit">Submit</button>
+            </div>
+            <hr />
+            <PokemonInfo pokemon={pokemon} />
+          </form>
+        </div>
+      );
+    }
+
+    function fetchPokemon(name) {
+      const pokemonQuery = `
+        query ($name: String) {
+          pokemon(name: $name) {
+            id
+            number
+            name
+            attacks {
+              special {
+                name
+                type
+                damage
+              }
+            }
+          }
+        }
+      `;
+
+      return window
+        .fetch("https://graphql-pokemon.vercel.app/", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json;charset=UTF-8",
+          },
+          body: JSON.stringify({
+            query: pokemonQuery,
+            variables: { name },
+          }),
+        })
+        .then((response) => response.json())
+        .then((result) => result.data.pokemon);
+    }
+
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
+</body>
